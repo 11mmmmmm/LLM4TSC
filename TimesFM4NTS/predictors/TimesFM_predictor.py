@@ -4,15 +4,17 @@ import numpy as np
 import torch
 import time
 
+# path = "/data/liuzhiheng"
+
 
 class TimesFM_predictor(Predictor):
     def __init__(self,args): 
 
         # model parameters
         self.ckpt_path = '../checkpoints/torch_model.ckpt'
-        self.num_layers = 50
+        self.num_layers = 20  # timesfm-1.0-200m-pytorch 模型的正确层数
         self.use_positional_embedding = False
-        self.context_len = 2048
+        self.context_len = 2048  # 可以设置，但模型实际最大支持512
         self.freq = 0
         # 0: high frequency such as daily, 1: weekly and monthly, 
         # 2: low frequency, short horizon time series. 
